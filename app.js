@@ -3,6 +3,10 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const methodOverride = require('method-override');
+const fileUpload = require('express-fileupload');
+
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const app = express();
@@ -16,6 +20,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 }, safeFileNames: true, preserveExtension: 4, debug: false
+}));
+app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
