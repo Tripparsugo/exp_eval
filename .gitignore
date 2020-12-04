@@ -105,5 +105,7 @@ dist
 
 db/
 
-.idea/
+idea/
+
+.idea
 
