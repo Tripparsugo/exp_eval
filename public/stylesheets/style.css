@@ -5,6 +5,7 @@ a {
 body {
   background-color: #132d5a;
   color: white;
+
 }
 
 #title-Tag-Line {
@@ -45,6 +46,7 @@ body {
 }
 
 .title{
+  text-align: center;
   display: block;
   font-family: sans-serif;
   margin: 10px auto 5px;
@@ -142,9 +144,14 @@ body {
 }
 
 #readyButton{
+  display: block;
+  font-family: sans-serif;
+  margin: 10px auto 5px;
+
   background-color: #981496;
   width: auto;
   height: 5em;
   color: #07316d;
+  font-size: xxx-large;
 }
 
