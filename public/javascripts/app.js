@@ -14,18 +14,24 @@ class App {
     }
 
     start() {
-        const formID = "hello";
+        const className = "hello";
 
         this.startTime = new Date().getMilliseconds();
         // const template = {formId:formID, title:variables, variables: this.wordsToVar(variables)};
-        const template = {formId:formID, title:variables};
-        this.entrypoint.innerHTML = ejs.views_test2(template);
-        const form = document.getElementById(formID);
+        const template = {buttonClass:className, variables:this.words};
+        const html = ejs.views_test2(template);
+        this.entrypoint.innerHTML = html;
 
-        return new Promise(resolve => {
-            form.onsubmit = (e)=>{
-                e.preventDefault();
-                resolve(e);
+
+        return new Promise(function(resolve) {
+            const buttons = document.getElementsByClassName(className);
+
+            for(let button of buttons) {
+                button.onclick = function(e) {
+                    e.preventDefault();
+                    this.style.color  = '#cfffa9';
+                    resolve(this);
+                }
             }
         });
     }

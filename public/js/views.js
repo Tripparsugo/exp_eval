@@ -1,4 +1,4 @@
-//EJS Compiled Views - This file was automatically generated on Fri Dec 04 2020 21:52:16 GMT+0100 (Central European Standard Time)
+//EJS Compiled Views - This file was automatically generated on Sat Dec 05 2020 00:35:49 GMT+0100 (Central European Standard Time)
 ejs.views_include = function(locals) {
     console.log("views_include_setup",locals);
     return function(path, d) {
@@ -244,17 +244,25 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<!DOCTYPE html>\n\n<div class=\"wrapper\">\n    <form id=<%= formId%> class=\"form\"  method=\"post\" action=\"/users\" enctype=\"multipart/form-data\">\n        <input type=\"text\" name=\"name\" class=\"name formEntry\" placeholder=\"Name\">\n        <input type=\"text\" name=\"email\" class=\"email formEntry\" placeholder=\"Email\">\n        <input type=\"submit\" class=\"submit formEntry\" value=\"Submit\">\n    </form>\n</div>\n"
+  , __lines = "<!DOCTYPE html>\n\n<div class=\"wrapper\">\n\n        <% variables.forEach(function (v) { %>\n        <button  name=\"answer\" class=<%= buttonClass%>> <%=v%> </button>\n        <% }) %>\n\n\n\n\n</div>\n"
   , __filename = undefined;
 try {
   var __output = "";
   function __append(s) { if (s !== undefined && s !== null) __output += s }
   with (locals || {}) {
-    ; __append("<!DOCTYPE html>\n\n<div class=\"wrapper\">\n    <form id=")
-    ; __line = 4
-    ; __append(escapeFn( formId))
-    ; __append(" class=\"form\"  method=\"post\" action=\"/users\" enctype=\"multipart/form-data\">\n        <input type=\"text\" name=\"name\" class=\"name formEntry\" placeholder=\"Name\">\n        <input type=\"text\" name=\"email\" class=\"email formEntry\" placeholder=\"Email\">\n        <input type=\"submit\" class=\"submit formEntry\" value=\"Submit\">\n    </form>\n</div>\n")
-    ; __line = 10
+    ; __append("<!DOCTYPE html>\n\n<div class=\"wrapper\">\n\n        ")
+    ; __line = 5
+    ;  variables.forEach(function (v) { 
+    ; __append("\n        <button  name=\"answer\" class=")
+    ; __line = 6
+    ; __append(escapeFn( buttonClass))
+    ; __append("> ")
+    ; __append(escapeFn(v))
+    ; __append(" </button>\n        ")
+    ; __line = 7
+    ;  }) 
+    ; __append("\n\n\n\n\n</div>\n")
+    ; __line = 13
   }
   return __output;
 } catch (e) {
