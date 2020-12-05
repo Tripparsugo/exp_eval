@@ -1,46 +1,51 @@
 class App {
     words;
-    DOMid;
     entrypoint;
-    startTime;
     wordsToVar;
 
 
-    constructor(words, DOMid, wordsToVar) {
-        this.words = words;
-        this.DOMid = DOMid;
-        this.entrypoint = document.getElementById(this.DOMid);
+    constructor(variables, DOMid, wordsToVar) {
+        this.variables = variables;
+        this.entrypoint = document.getElementById(DOMid);
         this.wordsToVar = wordsToVar;
     }
 
     start() {
         const className = "hello";
 
-        this.startTime = new Date().getMilliseconds();
+
         // const template = {formId:formID, title:variables, variables: this.wordsToVar(variables)};
-        const template = {buttonClass:className, variables:this.words};
+        const tmp = this.variables.map(v => this.wordsToVar(v.words));
+        const template = {buttonClass: className, variables: tmp};
         const html = ejs.views_test2(template);
         this.entrypoint.innerHTML = html;
 
+        const variables = this.variables;
+        const startTime = new Date().getMilliseconds();
+        const wordsToVar = this.wordsToVar;
 
-        return new Promise(function(resolve) {
+        return new Promise(function (resolve) {
             const buttons = document.getElementsByClassName(className);
 
-            for(let button of buttons) {
-                button.onclick = function(e) {
+            for (let button of buttons) {
+                button.onclick = function (e) {
                     e.preventDefault();
-                    this.style.color  = '#cfffa9';
-                    resolve(this);
+                    const answer = this.textContent;
+                    this.style.color = '#cfffa9';
+                    const totalTimeMs = new Date().getMilliseconds() - startTime;
+                    let isRightAnswer = false;
+                    variables.forEach(v => {
+                            if (wordsToVar(v.words) === answer && v.correct) {
+                                isRightAnswer = true;
+                            }
+                        }
+                    );
+                    const data = {totalTimeMs: totalTimeMs, isRightAnswer: isRightAnswer, answer:answer};
+                    resolve(data);
                 }
             }
         });
     }
-
-
-
-
-
-
 
 
 }

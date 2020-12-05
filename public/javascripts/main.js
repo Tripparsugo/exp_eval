@@ -2,34 +2,37 @@ console.log("hellow@@@@@@")
 
 
 let variables = [];
-variables[0] = "hi";
-variables[1] = "there";
+variables[0] = [{words:["hello", "there", "general", "kenobi"], correct:true}, {words:["hellow", "there", "general", "kenobi"], correct:false}];
+variables[1] =  [{words:["hello", "world"], correct:true}, {words:["hellowwwww", "world"], correct:false}];
 
 
-let c;
-let results;
+
+
+
+
 
 const entrypoint = "entrypoint";
 
 
-new App(variables, entrypoint)
-    .start()
-    .then(
-        e => {
-            const i =1;
-            console.log(e)
+getResults(variables).then((res)=>console.log(res));
 
-        }
-    );
+// new App(variables[0], entrypoint, toCamel)
+//     .start()
+//     .then(
+//         data => {
+//             const i =1;
+//             console.log(data)
+//
+//         }
+//     );
 
 
-async function getResults() {
-    for (let v in variables) {
-        results[c] = await new App(v, entrypoint, toCamel).start();
-        c++;
+async function getResults(variables) {
+    const res = [];
+    for (let v of variables) {
+        res.push( await new App(v, entrypoint, toCamel).start());
     }
-
-    //fetch
+    return res;
 }
 
 

@@ -1,4 +1,4 @@
-//EJS Compiled Views - This file was automatically generated on Sat Dec 05 2020 00:35:49 GMT+0100 (Central European Standard Time)
+//EJS Compiled Views - This file was automatically generated on Sat Dec 05 2020 20:28:41 GMT+0100 (Central European Standard Time)
 ejs.views_include = function(locals) {
     console.log("views_include_setup",locals);
     return function(path, d) {
@@ -244,7 +244,7 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<!DOCTYPE html>\n\n<div class=\"wrapper\">\n\n        <% variables.forEach(function (v) { %>\n        <button  name=\"answer\" class=<%= buttonClass%>> <%=v%> </button>\n        <% }) %>\n\n\n\n\n</div>\n"
+  , __lines = "<!DOCTYPE html>\n\n<div class=\"wrapper\">\n\n        <% variables.forEach(function (v) { %>\n        <button  name=\"answer\" class=<%= buttonClass%>><%=v%></button>\n        <% }) %>\n\n\n\n\n</div>\n"
   , __filename = undefined;
 try {
   var __output = "";
@@ -256,9 +256,9 @@ try {
     ; __append("\n        <button  name=\"answer\" class=")
     ; __line = 6
     ; __append(escapeFn( buttonClass))
-    ; __append("> ")
+    ; __append(">")
     ; __append(escapeFn(v))
-    ; __append(" </button>\n        ")
+    ; __append("</button>\n        ")
     ; __line = 7
     ;  }) 
     ; __append("\n\n\n\n\n</div>\n")
