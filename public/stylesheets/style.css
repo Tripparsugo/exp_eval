@@ -141,3 +141,10 @@ body {
   color: chartreuse;
 }
 
+#readyButton{
+  background-color: #981496;
+  width: auto;
+  height: 5em;
+  color: #07316d;
+}
+
