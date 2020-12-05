@@ -52,14 +52,40 @@ const entrypoint = "entrypoint";
 
 getResults(variables).then((res)=>console.log(res));
 
+function getRandomizedVariablesWithCaseInfo(variables, caseInfos){
+    /* Randomize array in-place using Durstenfeld shuffle algorithm */
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    let tmp = [];
+    for (let caseInfo of caseInfos){
+        for(let v of variables){
+            v.caseInfo = caseInfo;
+            tmp.push(v)
+        }
+    }
+
+    shuffleArray(tmp);
+
+    return tmp;
+}
+
+
 
 
 async function getResults(variables) {
-    const testResult1 =  await runtTest1(variables);
-    const formResults =null;
+    const formResults = null;
+    const caseInfos = [{caseName:"CamelCase", caseConverter:toCamel}, {caseName:"kebab-case", caseConverter:toKebab}]
+    const testResult1 =  await runtTest1(getRandomizedVariablesWithCaseInfo(variables, caseInfos));
     showEnd();
 
-    return {formResults:formResults, testResult1:testResult1}
+    const visited = getCookie("doneTest") ==="true";
+    setDoneTest();
+    return {formResults:formResults, testResult1:testResult1, doneTest: visited}
 }
 
 
@@ -74,19 +100,23 @@ async function runtTest1(variables){
     const res = [];
     for (let v of variables) {
         const app = new App(v, entrypoint, toCamel);
-        await app.showAnswer();
-         res.push(await app.start());
+        res.push(await app.start());
     }
     return res;
 }
 
 
-
-
-function showWords(words) {
-   document.body.innerText =`find  ${words.join(" ")}`;
-   sleep(2000);
+function setDoneTest() {
+    document.cookie = "doneTest=true; expires=Thu, 18 Dec 2099 12:00:00 UTC";
 }
+
+function getCookie(name)
+{
+
+    const cookiestring=RegExp(name+"=[^;]+").exec(document.cookie);
+    return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./,"") : "");
+}
+
 
 
 function toCamel(words) {

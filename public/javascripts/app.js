@@ -1,13 +1,14 @@
 class App {
-    // words;
     entrypoint;
     wordsToVar;
+    cs;
 
 
-    constructor(variables, DOMid, wordsToVar) {
+    constructor(variables, DOMid, wordsToVar, cs) {
         this.variables = variables;
         this.entrypoint = document.getElementById(DOMid);
         this.wordsToVar = wordsToVar;
+        this.cs = cs;
 
 
     }
@@ -29,7 +30,9 @@ class App {
         })
     }
 
-    start() {
+    async start() {
+
+        await this.showAnswer();
 
         const className = "hello";
         // const template = {formId:formID, title:variables, variables: this.wordsToVar(variables)};
@@ -41,6 +44,7 @@ class App {
         const variables = this.variables;
         const startTime = new Date().getTime();
         const wordsToVar = this.wordsToVar;
+        const cs = this.cs;
 
         return new Promise(function (resolve) {
             const buttons = document.getElementsByClassName(className);
@@ -59,7 +63,7 @@ class App {
                             }
                         }
                     );
-                    const data = {totalTimeMs: totalTimeMs, isRightAnswer: isRightAnswer, answer: answer};
+                    const data = {totalTimeMs: totalTimeMs, isRightAnswer: isRightAnswer, answer: answer, case:cs};
                     resolve(data);
                 }
             }
