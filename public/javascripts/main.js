@@ -16,23 +16,40 @@ const entrypoint = "entrypoint";
 
 getResults(variables).then((res)=>console.log(res));
 
-// new App(variables[0], entrypoint, toCamel)
-//     .start()
-//     .then(
-//         data => {
-//             const i =1;
-//             console.log(data)
-//
-//         }
-//     );
 
 
 async function getResults(variables) {
+    const testResult1 =  await runtTest1(variables);
+    const formResults =null;
+    showEnd();
+
+    return {formResults:formResults, testResult1:testResult1}
+}
+
+
+
+
+function showEnd(){
+    document.body.innerText = "Thanks for attending this test";
+}
+
+
+async function runtTest1(variables){
     const res = [];
     for (let v of variables) {
-        res.push( await new App(v, entrypoint, toCamel).start());
+        const app = new App(v, entrypoint, toCamel);
+        await app.showAnswer();
+         res.push(await app.start());
     }
     return res;
+}
+
+
+
+
+function showWords(words) {
+   document.body.innerText =`find  ${words.join(" ")}`;
+   sleep(2000);
 }
 
 
@@ -43,3 +60,4 @@ function toCamel(words) {
 function toKebab(words) {
     words.join("-");
 }
+
