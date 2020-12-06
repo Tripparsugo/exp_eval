@@ -1,16 +1,10 @@
 class App {
     entrypoint;
-    wordsToVar;
-    cs;
 
 
-    constructor(variables, DOMid, wordsToVar, cs) {
+    constructor(variables, DOMid) {
         this.variables = variables;
         this.entrypoint = document.getElementById(DOMid);
-        this.wordsToVar = wordsToVar;
-        this.cs = cs;
-
-
     }
 
 
@@ -34,17 +28,24 @@ class App {
 
         await this.showAnswer();
 
+        const variables = this.variables;
+        const caseName = variables.caseInfo.caseName;
+        const caseConverter = variables.caseInfo.caseConverter;
+
         const className = "hello";
-        // const template = {formId:formID, title:variables, variables: this.wordsToVar(variables)};
-        const tmp = this.variables.map(v => this.wordsToVar(v.words));
+
+        const tmp = this.variables.map(v => caseConverter(v.words));
+
+
         const template = {buttonClass: className, variables: tmp};
         const html = ejs.views_test2(template);
+
+
         this.entrypoint.innerHTML = html;
 
-        const variables = this.variables;
+
         const startTime = new Date().getTime();
-        const wordsToVar = this.wordsToVar;
-        const cs = this.cs;
+        // const wordsToVar = this.wordsToVar;
 
         return new Promise(function (resolve) {
             const buttons = document.getElementsByClassName(className);
@@ -56,44 +57,25 @@ class App {
                     this.style.color = '#cfffa9';
                     const now = new Date().getTime();
                     const totalTimeMs = now - startTime;
-                    let isRightAnswer = false;
+
+
+                    let data = undefined;
                     variables.forEach(v => {
-                            if (wordsToVar(v.words) === answer && v.correct) {
-                                isRightAnswer = true;
+                            if (caseConverter(v.words) === answer) {
+                                data = {totalTimeMs: totalTimeMs, isRightAnswer: v.correct, answer: answer, caseName:caseName};
                             }
                         }
                     );
-                    const data = {totalTimeMs: totalTimeMs, isRightAnswer: isRightAnswer, answer: answer, case:cs};
+
                     resolve(data);
                 }
             }
         });
     }
 
-    showWords() {
 
-        function sleep(milliseconds) {
-            const date = Date.now();
-            let currentDate = null;
-            do {
-                currentDate = Date.now();
-            } while (currentDate - date < milliseconds);
-        }
 
-        console.log(this.variables);
-        this.variables.forEach(v => {
-                if (v.correct) document.body.innerText = `find  ${v.words.join(" ")}`;
-                sleep(3000);
-            }
-        );
 
-    }
-
-    sleep(milliseconds) {
-        const date = Date.now();
-        let currentDate = null;
-        do {
-            currentDate = Date.now();
-        } while (currentDate - date < milliseconds);
-    }
 }
+
+

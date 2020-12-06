@@ -1,46 +1,61 @@
-console.log("hellow@@@@@@")
+console.log("hellow@@@@@@");
 
 
-let variables = [];
-variables[0] = [{words:["hello", "there", "general", "kenobi"], correct:true}, {words:["hellow", "there", "general", "kenobi"], correct:false}];
-variables[1] =  [{words:["hello", "world"], correct:true}, {words:["hellowwwww", "world"], correct:false}];
-variables[2] = [{words:["fresh", "freshwater", "fish"], correct:true},
-    {words:["fresh", "friedwater", "fish"], correct:false},
-    {words:["free ", "freshwater", "fish"], correct:false},
-    {words:["fresh", "frenzywater", "fish"], correct:false},
-]
+function getVariables() {
+    let variables = [];
+    variables[0] = [{
+        words: ["hello", "there", "general", "kenobi"],
+        correct: true
+    }, {words: ["hellow", "there", "general", "kenobi"], correct: false}];
+    variables[1] = [{words: ["hello", "world"], correct: true}, {words: ["hellowwwww", "world"], correct: false}];
+    variables[2] = [{words: ["fresh", "freshwater", "fish"], correct: true},
+        {words: ["fresh", "friedwater", "fish"], correct: false},
+        {words: ["free ", "freshwater", "fish"], correct: false},
+        {words: ["fresh", "frenzywater", "fish"], correct: false},
+    ]
 
-variables[3] = [{words:["tropical", "cat"], correct:true},
-    {words:["tripping", "cat"], correct:false},
-    {words:["tropical", "cut"], correct:false},
-    {words:["typical", "cat"], correct:false},
-]
+    variables[3] = [{words: ["tropical", "cat"], correct: true},
+        {words: ["tripping", "cat"], correct: false},
+        {words: ["tropical", "cut"], correct: false},
+        {words: ["typical", "cat"], correct: false},
+    ]
 
-variables[4] = [{words:["data", "value"], correct:true},
-    {words:["data", "varied"], correct:false},
-    {words:["date", "value"], correct:false},
-    {words:["data", "vale"], correct:false},
-]
+    variables[4] = [{words: ["data", "value"], correct: true},
+        {words: ["data", "varied"], correct: false},
+        {words: ["date", "value"], correct: false},
+        {words: ["data", "vale"], correct: false},
+    ]
 
-variables[5] = [{words:["file", "name"], correct:true},
-    {words:["first", "name"], correct:false},
-    {words:["file", "numb"], correct:false},
-    {words:["filet", "name"], correct:false},
-]
+    variables[5] = [{words: ["file", "name"], correct: true},
+        {words: ["first", "name"], correct: false},
+        {words: ["file", "numb"], correct: false},
+        {words: ["filet", "name"], correct: false},
+    ]
 
-variables[6] = [{words:["internal", "frameInternal", "frame", "title", "pane",
-        "internal", "frame", "title", "panel", "Maximize",
-        "button", "window", "not", "focused", "state"], correct:true},
-    {words:["internal", "frameInternal", "frame", "title", "pane",
-            "intestinal", "frame", "title", "panel", "Maximize",
-            "button", "window", "not", "focused", "state"], correct:false},
-    {words:["internal", "frameInternal", "frame", "title", "pane",
-            "internal", "frame" ,"title", "panel", "Maximize",
-            "buttocks", "window", "not", "focused", "state"], correct:false},
-    {words:["internal", "frameInternal", "frame", "tilted", "pane",
+    variables[6] = [{
+        words: ["internal", "frameInternal", "frame", "title", "pane",
             "internal", "frame", "title", "panel", "Maximize",
-            "buttons", "window", "not", "focused", "state"], correct:false},
-]
+            "button", "window", "not", "focused", "state"], correct: true
+    },
+        {
+            words: ["internal", "frameInternal", "frame", "title", "pane",
+                "intestinal", "frame", "title", "panel", "Maximize",
+                "button", "window", "not", "focused", "state"], correct: false
+        },
+        {
+            words: ["internal", "frameInternal", "frame", "title", "pane",
+                "internal", "frame", "title", "panel", "Maximize",
+                "buttocks", "window", "not", "focused", "state"], correct: false
+        },
+        {
+            words: ["internal", "frameInternal", "frame", "tilted", "pane",
+                "internal", "frame", "title", "panel", "Maximize",
+                "buttons", "window", "not", "focused", "state"], correct: false
+        },
+    ]
+
+    return variables;
+}
 
 
 
@@ -50,9 +65,9 @@ variables[6] = [{words:["internal", "frameInternal", "frame", "title", "pane",
 const entrypoint = "entrypoint";
 
 
-getResults(variables).then((res)=>console.log(res));
+getResults().then((res)=>console.log(res));
 
-function getRandomizedVariablesWithCaseInfo(variables, caseInfos){
+function getRandomizedVariablesWithCaseInfo(caseInfos){
     /* Randomize array in-place using Durstenfeld shuffle algorithm */
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -61,15 +76,19 @@ function getRandomizedVariablesWithCaseInfo(variables, caseInfos){
         }
     }
 
+
     let tmp = [];
     for (let caseInfo of caseInfos){
-        for(let v of variables){
+        const vs = getVariables();
+        for(let v of vs){
             v.caseInfo = caseInfo;
-            tmp.push(v)
+            tmp.push(v);
         }
     }
 
+
     shuffleArray(tmp);
+
 
     return tmp;
 }
@@ -77,10 +96,10 @@ function getRandomizedVariablesWithCaseInfo(variables, caseInfos){
 
 
 
-async function getResults(variables) {
+async function getResults() {
     const formResults = null;
-    const caseInfos = [{caseName:"CamelCase", caseConverter:toCamel}, {caseName:"kebab-case", caseConverter:toKebab}]
-    const testResult1 =  await runtTest1(getRandomizedVariablesWithCaseInfo(variables, caseInfos));
+    const caseInfos = [{caseName:"CamelCase", caseConverter:toCamel}, {caseName:"kebab-case", caseConverter:toKebab}];
+    const testResult1 =  await runtTest1(getRandomizedVariablesWithCaseInfo(caseInfos));
     showEnd();
 
     const visited = getCookie("doneTest") ==="true";
@@ -99,7 +118,7 @@ function showEnd(){
 async function runtTest1(variables){
     const res = [];
     for (let v of variables) {
-        const app = new App(v, entrypoint, toCamel);
+        const app = new App(v, entrypoint);
         res.push(await app.start());
     }
     return res;
@@ -107,7 +126,7 @@ async function runtTest1(variables){
 
 
 function setDoneTest() {
-    document.cookie = "doneTest=true; expires=Thu, 18 Dec 2099 12:00:00 UTC";
+    document.cookie = "doneTest=true; expires=Thu, 18 Dec 2099 12:00:00 UTC; SameSite=Strict";
 }
 
 function getCookie(name)
@@ -124,6 +143,6 @@ function toCamel(words) {
 }
 
 function toKebab(words) {
-    words.join("-");
+    return words.join("-");
 }
 
