@@ -52,6 +52,19 @@ const entrypoint = "entrypoint";
 
 getResults(variables).then((res)=>console.log(res));
 
+let user_id;
+let register_form = document.querySelector("form")
+register_form.addEventListener("submit", (event)=>{
+    event.preventDefault();
+    let body = new FormData(register_form);
+    fetch("/app/", {method:"POST", body})
+        .then(res=>res.json())
+        .then(obj => {
+            user_id = obj;
+            event.target.style.display = "none";
+        });
+})
+
 function getRandomizedVariablesWithCaseInfo(variables, caseInfos){
     /* Randomize array in-place using Durstenfeld shuffle algorithm */
     function shuffleArray(array) {

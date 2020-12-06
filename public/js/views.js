@@ -1,4 +1,4 @@
-//EJS Compiled Views - This file was automatically generated on Sat Dec 05 2020 23:21:01 GMT+0100 (Central European Standard Time)
+//EJS Compiled Views - This file was automatically generated on Sun Dec 06 2020 00:18:51 GMT+0100 (Central European Standard Time)
 ejs.views_include = function(locals) {
     console.log("views_include_setup",locals);
     return function(path, d) {
@@ -181,7 +181,7 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<!DOCTYPE html>\n<html>\n<head>\n  <title><%= title%></title>\n  <link rel='stylesheet' href='/stylesheets/style.css' />\n</head>\n<body>\n<div class=\"wrapper\">\n  <div class=\"pageTitle title\">Sign Up For The Experiment</div>\n  <div class=\"secondaryTitle title\">Please fill this form to sign up.</div>\n  <form class=\"form\"  method=\"post\" action=\"/users\" enctype=\"multipart/form-data\">\n    <input type=\"text\" name=\"name\" class=\"name formEntry\" placeholder=\"Name\">\n    <input type=\"text\" name=\"email\" class=\"email formEntry\" placeholder=\"Email\">\n    <input type=\"submit\" class=\"submit formEntry\" value=\"Submit\">\n\n    <script src=\"javascripts/main.js\"></script>\n  </form>\n</div>\n</body>\n</html>\n"
+  , __lines = "<!DOCTYPE html>\n<html>\n<head>\n  <title><%= title%></title>\n  <link rel='stylesheet' href='/stylesheets/style.css' />\n</head>\n<body>\n<div class=\"wrapper\">\n  <div class=\"pageTitle title\">Sign Up For The Experiment</div>\n  <div class=\"secondaryTitle title\">Please fill this form to sign up.</div>\n  <form class=\"form\"  method=\"post\" action=\"/users\" enctype=\"multipart/form-data\">\n    <input type=\"text\" name=\"name\" class=\"name formEntry\" placeholder=\"Name\">\n    <input type=\"text\" name=\"email\" class=\"email formEntry\" placeholder=\"Email\">\n    <input type=\"submit\" class=\"submit formEntry\" value=\"Submit\">\n\n  </form>\n</div>\n</body>\n</html>\n"
   , __filename = undefined;
 try {
   var __output = "";
@@ -190,8 +190,8 @@ try {
     ; __append("<!DOCTYPE html>\n<html>\n<head>\n  <title>")
     ; __line = 4
     ; __append(escapeFn( title))
-    ; __append("</title>\n  <link rel='stylesheet' href='/stylesheets/style.css' />\n</head>\n<body>\n<div class=\"wrapper\">\n  <div class=\"pageTitle title\">Sign Up For The Experiment</div>\n  <div class=\"secondaryTitle title\">Please fill this form to sign up.</div>\n  <form class=\"form\"  method=\"post\" action=\"/users\" enctype=\"multipart/form-data\">\n    <input type=\"text\" name=\"name\" class=\"name formEntry\" placeholder=\"Name\">\n    <input type=\"text\" name=\"email\" class=\"email formEntry\" placeholder=\"Email\">\n    <input type=\"submit\" class=\"submit formEntry\" value=\"Submit\">\n\n    <script src=\"javascripts/main.js\"></script>\n  </form>\n</div>\n</body>\n</html>\n")
-    ; __line = 21
+    ; __append("</title>\n  <link rel='stylesheet' href='/stylesheets/style.css' />\n</head>\n<body>\n<div class=\"wrapper\">\n  <div class=\"pageTitle title\">Sign Up For The Experiment</div>\n  <div class=\"secondaryTitle title\">Please fill this form to sign up.</div>\n  <form class=\"form\"  method=\"post\" action=\"/users\" enctype=\"multipart/form-data\">\n    <input type=\"text\" name=\"name\" class=\"name formEntry\" placeholder=\"Name\">\n    <input type=\"text\" name=\"email\" class=\"email formEntry\" placeholder=\"Email\">\n    <input type=\"submit\" class=\"submit formEntry\" value=\"Submit\">\n\n  </form>\n</div>\n</body>\n</html>\n")
+    ; __line = 20
   }
   return __output;
 } catch (e) {
@@ -244,7 +244,7 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<!DOCTYPE html>\n<html>\n<head>\n    <title><%= title%></title>\n    <link rel='stylesheet' href='/stylesheets/style.css' />\n</head>\n<body>\n<div class=\"wrapper\">\n    <div class=\"pageTitle title\">Sign Up For The Experiment</div>\n    <div class=\"secondaryTitle title\">Please fill this form to sign up.</div>\n    <div id=\"entrypoint\"></div>\n\n\n</div>\n</body>\n<script src=\"javascripts/ejs/ejs.js\"></script>\n<script src=\"js/views.js\"></script>\n<script src=\"javascripts/app.js\"></script>\n<script src=\"javascripts/main.js\"></script>\n\n\n</html>"
+  , __lines = "<!DOCTYPE html>\n<html>\n<head>\n    <title><%= title%></title>\n    <link rel='stylesheet' href='/stylesheets/style.css' />\n</head>\n<body>\n<div class=\"wrapper\">\n    <div class=\"pageTitle title\">Sign Up For The Experiment</div>\n    <div class=\"secondaryTitle title\">Please fill this form to sign up.</div>\n    <form class=\"form\"  method=\"post\" action=\"/users\" enctype=\"multipart/form-data\">\n        <input type=\"text\" name=\"name\" class=\"name formEntry\" placeholder=\"Name\">\n        <input type=\"text\" name=\"email\" class=\"email formEntry\" placeholder=\"Email\">\n        <input type=\"submit\" class=\"submit formEntry\" value=\"Submit\">\n\n    </form>\n    <div id=\"entrypoint\"></div>\n\n\n</div>\n</body>\n<script src=\"javascripts/ejs/ejs.js\"></script>\n<script src=\"js/views.js\"></script>\n<script src=\"javascripts/app.js\"></script>\n<script src=\"javascripts/main.js\"></script>\n\n\n</html>"
   , __filename = undefined;
 try {
   var __output = "";
@@ -253,8 +253,8 @@ try {
     ; __append("<!DOCTYPE html>\n<html>\n<head>\n    <title>")
     ; __line = 4
     ; __append(escapeFn( title))
-    ; __append("</title>\n    <link rel='stylesheet' href='/stylesheets/style.css' />\n</head>\n<body>\n<div class=\"wrapper\">\n    <div class=\"pageTitle title\">Sign Up For The Experiment</div>\n    <div class=\"secondaryTitle title\">Please fill this form to sign up.</div>\n    <div id=\"entrypoint\"></div>\n\n\n</div>\n</body>\n<script src=\"javascripts/ejs/ejs.js\"></script>\n<script src=\"js/views.js\"></script>\n<script src=\"javascripts/app.js\"></script>\n<script src=\"javascripts/main.js\"></script>\n\n\n</html>")
-    ; __line = 22
+    ; __append("</title>\n    <link rel='stylesheet' href='/stylesheets/style.css' />\n</head>\n<body>\n<div class=\"wrapper\">\n    <div class=\"pageTitle title\">Sign Up For The Experiment</div>\n    <div class=\"secondaryTitle title\">Please fill this form to sign up.</div>\n    <form class=\"form\"  method=\"post\" action=\"/users\" enctype=\"multipart/form-data\">\n        <input type=\"text\" name=\"name\" class=\"name formEntry\" placeholder=\"Name\">\n        <input type=\"text\" name=\"email\" class=\"email formEntry\" placeholder=\"Email\">\n        <input type=\"submit\" class=\"submit formEntry\" value=\"Submit\">\n\n    </form>\n    <div id=\"entrypoint\"></div>\n\n\n</div>\n</body>\n<script src=\"javascripts/ejs/ejs.js\"></script>\n<script src=\"js/views.js\"></script>\n<script src=\"javascripts/app.js\"></script>\n<script src=\"javascripts/main.js\"></script>\n\n\n</html>")
+    ; __line = 28
   }
   return __output;
 } catch (e) {
@@ -307,7 +307,7 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<!DOCTYPE html>\n\n<div class=\"wrapper\">\n\n        <% variables.forEach(function (v) { %>\n        <button  name=\"answer\" class=<%= buttonClass%>><%=v%></button>\n        <% }) %>\n\n\n\n\n</div>\n"
+  , __lines = "<!DOCTYPE html>\n\n<div class=\"wrapper\">\n\n        <% variables.forEach(function (v) { %>\n        <button name=\"answer\" class=<%= buttonClass%>><%=v%></button>\n        <% }) %>\n\n\n\n\n</div>\n"
   , __filename = undefined;
 try {
   var __output = "";
@@ -316,7 +316,7 @@ try {
     ; __append("<!DOCTYPE html>\n\n<div class=\"wrapper\">\n\n        ")
     ; __line = 5
     ;  variables.forEach(function (v) { 
-    ; __append("\n        <button  name=\"answer\" class=")
+    ; __append("\n        <button name=\"answer\" class=")
     ; __line = 6
     ; __append(escapeFn( buttonClass))
     ; __append(">")

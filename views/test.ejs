@@ -8,6 +8,11 @@
 <div class="wrapper">
     <div class="pageTitle title">Sign Up For The Experiment</div>
     <div class="secondaryTitle title">Please fill this form to sign up.</div>
+    <form class="form"  method="post" action="/users" enctype="multipart/form-data">
+        <input type="text" name="name" class="name formEntry" placeholder="Name">
+        <input type="text" name="email" class="email formEntry" placeholder="Email">
+        <input type="submit" class="submit formEntry" value="Submit">
+    </form>
     <div id="entrypoint"></div>
 
 
