@@ -33,7 +33,7 @@ function getVariables() {
     ]
 
     variables[6] = [{
-        words: ["internal", "frameInternal", "frame", "title", "pane",
+        words: ["internal", "frame", "title", "pane",
             "internal", "frame", "title", "panel", "Maximize",
             "button", "window", "not", "focused", "state"], correct: true
     },
@@ -118,9 +118,12 @@ function getRandomizedVariablesWithCaseInfo(caseInfos){
         const vs = getVariables();
         for(let v of vs){
             v.caseInfo = caseInfo;
-            for(let ws of v){
-                shuffleArray(ws.words);
-            }
+            // for(let ws of v){
+            //     shuffleArray(ws);
+            // }
+            shuffleArray(v);
+
+
 
             tmp.push(v);
         }
