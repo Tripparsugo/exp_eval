@@ -49,9 +49,6 @@ variables[6] = [{words:["internal", "frameInternal", "frame", "title", "pane",
 
 const entrypoint = "entrypoint";
 
-
-getResults(variables).then((res)=>console.log(res));
-
 let user_id;
 let register_form = document.querySelector("form")
 register_form.addEventListener("submit", (event)=>{
@@ -64,6 +61,13 @@ register_form.addEventListener("submit", (event)=>{
             event.target.style.display = "none";
         });
 })
+
+
+getResults(variables).then((res)=>{
+    console.log(res)
+    fetch("/app/"+user_id, {method:"PUT", body:JSON.stringify(res)}).then(res => {}).catch(err => console.log(err));
+});
+
 
 function getRandomizedVariablesWithCaseInfo(variables, caseInfos){
     /* Randomize array in-place using Durstenfeld shuffle algorithm */
