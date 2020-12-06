@@ -7,16 +7,29 @@
 <body>
 <div class="wrapper">
     <div class="pageTitle title">Sign Up For The Experiment</div>
-    <div class="secondaryTitle title">Please fill this form to sign up.</div>
+    <div class="secondaryTitle title">Please fill this form to sign up. (this is gonna stay up for the whole experiment case we rendered the rest in the wrong place)</div>
     <form class="form"  method="post" action="/users" enctype="multipart/form-data">
-        <input type="text" name="name" class="name formEntry" placeholder="Name">
-        <input type="text" name="email" class="email formEntry" placeholder="Email">
+        <input type="text" name="name" class="name formEntry" placeholder="NickName">
+
+        Programming expericence:<br>
         <input type="radio" id="none" name="level"  class="termsConditions" value="none">
         <label for="none">None (little to no experience)</label><br>
         <input type="radio" id="novice" name="level" class="termsConditions" value="novice (">
         <label for="novice">Novice (less than 3 years experience)</label><br>
         <input type="radio" id="expert" name="level" class="termsConditions" value="expert">
-        <label for="expert">Expert</label>
+        <label for="expert">Expert</label> <hr>
+
+        Most used style:<br>
+        <input type="radio" id="camel" name="mostUsedCase"  class="termsConditions" value="CamelCase">
+        <label for="camel">I use CamelCase more</label><br>
+
+        <input type="radio" id="kebab" name="mostUsedCase"  class="termsConditions" value=kebab-case>
+        <label for="kebab">I use  more kebab-case</label><br>
+
+        <input type="radio" id="both" name="mostUsedCase"  class="termsConditions" value="both">
+        <label for="both">I use both equally (or none)</label>
+
+
         <input type="submit" class="submit formEntry" value="Submit">
     </form>
     <div id="entrypoint"></div>

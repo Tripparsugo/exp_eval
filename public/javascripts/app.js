@@ -9,11 +9,10 @@ class App {
 
 
     getAnswer(){
-        return this.variables.filter(v=>v.correct).words;
+        return this.variables.filter(v=>v.correct)[0].words.join(" ");
     }
 
     showAnswer() {
-
         this.entrypoint.innerHTML=  ejs.views_button({answer: this.getAnswer()});
         const button = document.getElementById("readyButton");
         return new Promise(function (resolve) {
@@ -62,7 +61,7 @@ class App {
                     let data = undefined;
                     variables.forEach(v => {
                             if (caseConverter(v.words) === answer) {
-                                data = {totalTimeMs: totalTimeMs, isRightAnswer: v.correct, answer: answer, caseName:caseName};
+                                data = {totalTimeMs: totalTimeMs, isRightAnswer: v.correct, answer: answer, caseName:caseName, variableSize: v.words.length};
                             }
                         }
                     );

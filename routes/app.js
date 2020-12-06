@@ -11,10 +11,10 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res){
 
     let new_test_subject = {
-        name : req.body.name,
-        email : req.body.email,
-        level : req.body.level,
-        result: req.body.result
+        name : req.body.formResults.name,
+        email : req.body.formResults.email,
+        level : req.body.formResults.level,
+        result: req.body.testResult1
     };
 
     console.log(req.body);
@@ -24,24 +24,24 @@ router.post('/', function(req, res){
     });
 });
 
-router.put('/:id', function(req, res){
-
-
-    console.log(req.body);
-    let filter = {_id : ObjectId(req.params.id)};
-    models.data.findOne(filter).then(found=>{
-        let update = {
-            _id : ObjectId(req.params.id),
-            name : found.name,
-            email : found.email,
-            level : found.level,
-            result: req.body
-        };
-        models.data.replaceOne(filter, update).then(result =>{
-            res.status(201).end();
-        })
-    });
-
-});
+// router.put('/:id', function(req, res){
+//
+//
+//     console.log(req.body);
+//     let filter = {_id : ObjectId(req.params.id)};
+//     models.data.findOne(filter).then(found=>{
+//         let update = {
+//             _id : ObjectId(req.params.id),
+//             name : found.name,
+//             email : found.email,
+//             level : found.level,
+//             result: req.body
+//         };
+//         models.data.replaceOne(filter, update).then(result =>{
+//             res.status(201).end();
+//         })
+//     });
+//
+// });
 
 module.exports = router;

@@ -89,10 +89,9 @@ function doForm(){
             event.preventDefault();
             let body = {};
             body.name = event.target.elements.name.value;
-            body.email = event.target.elements.email.value;
             body.level = event.target.elements.level.value;
+            body.level = event.target.elements.mostUsedCase.value;
 
-            console.log(body);
             event.target.style.display = "none";
             resolve(body);
         })})
@@ -110,6 +109,7 @@ function getRandomizedVariablesWithCaseInfo(caseInfos){
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
         }
+        return array;
     }
 
 
@@ -118,6 +118,10 @@ function getRandomizedVariablesWithCaseInfo(caseInfos){
         const vs = getVariables();
         for(let v of vs){
             v.caseInfo = caseInfo;
+            for(let ws of v){
+                shuffleArray(ws.words);
+            }
+
             tmp.push(v);
         }
     }

@@ -10,11 +10,20 @@ const bodyParser = require("body-parser");
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const appRouter = require('./routes/app');
+const dbRouter = require('./routes/database');
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// app.use (function (req, res, next) {
+//   if (req.secure) {
+//     next();
+//   } else {
+//     res.redirect('https://' + req.headers.host + req.url + ":3000");
+//   }
+// });
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -29,6 +38,7 @@ app.use(methodOverride('_method'));
 
 app.use('/app', appRouter);
 app.use('/users', usersRouter);
+app.use('/database', dbRouter);
 app.use('/', indexRouter);
 
 
@@ -48,5 +58,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;
