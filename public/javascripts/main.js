@@ -52,7 +52,7 @@ function getVariables() {
                 "internal", "frame", "title", "panel", "Maximize",
                 "buttons", "window", "not", "focused", "state"], correct: false
         },
-    ]
+    ];
 
     return variables;
 }
@@ -64,8 +64,44 @@ function getVariables() {
 
 const entrypoint = "entrypoint";
 
+getResults().then((res)=>{
+    const json = JSON.stringify(res);
+    console.log(json);
+    fetch("/app/", {method:"POST",
+        body:json,
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        }
 
-getResults().then((res)=>console.log(res));
+    })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+});
+
+
+
+function doForm(){
+    const  register_form = document.querySelector("form");
+
+    return new Promise((resolve => {
+        register_form.addEventListener("submit", (event)=> {
+            event.preventDefault();
+            let body = {};
+            body.name = event.target.elements.name.value;
+            body.email = event.target.elements.email.value;
+            body.level = event.target.elements.level.value;
+
+            console.log(body);
+            event.target.style.display = "none";
+            resolve(body);
+        })})
+    );
+}
+
+
+
+
 
 function getRandomizedVariablesWithCaseInfo(caseInfos){
     /* Randomize array in-place using Durstenfeld shuffle algorithm */
@@ -97,7 +133,8 @@ function getRandomizedVariablesWithCaseInfo(caseInfos){
 
 
 async function getResults() {
-    const formResults = null;
+
+    const formResults = await  doForm();
     const caseInfos = [{caseName:"CamelCase", caseConverter:toCamel}, {caseName:"kebab-case", caseConverter:toKebab}];
     const testResult1 =  await runtTest1(getRandomizedVariablesWithCaseInfo(caseInfos));
     showEnd();
